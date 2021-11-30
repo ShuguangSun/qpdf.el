@@ -1,4 +1,4 @@
-;;; qpdf-crypt.el --- Encript/decript PDF            -*- lexical-binding: t; -*-
+;;; qpdf-crypt.el --- Encrypt/decrypt PDF            -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Shuguang Sun
 
@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;; To Encript/decript PDF files.
+;; To Encrypt/decrypt PDF files.
 
 ;;; Code:
 
@@ -103,7 +103,7 @@
 
 
 (defun qpdf-crypt-decrypt-file (&optional args)
-  "Qpdf decript file.
+  "Qpdf decrypt file.
 Optional argument ARGS Transient option."
   (interactive (if current-prefix-arg
                    nil
@@ -125,7 +125,7 @@ Optional argument ARGS Transient option."
 ;;; * menu
 ;;;###autoload (autoload 'qpdf-crypt-decrypt "qpdf-crypt" nil t)
 (transient-define-prefix qpdf-crypt-decrypt ()
-  "Decript pdf files."
+  "Decrypt pdf files."
   ["Arguments"
    ("f" "infile name" "--infile=" transient-read-file)
    ("o" "outfile name" "--outfile=" transient-read-file)
