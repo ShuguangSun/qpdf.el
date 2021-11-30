@@ -1,0 +1,49 @@
+name: Sync Gitee Repos From Github
+
+on:
+  # push:
+  #   branches:
+  #     - master
+  schedule:
+    # 每天北京时间9点跑
+    - cron:  '0 1 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Mirror the Github organization repos to Gitee.
+      uses: Yikun/gitee-mirror-action@v0.01
+      with:
+        # 必选，需要同步的Github用户（源）
+        src: github/Yikun
+        # 必选，需要同步到的Gitee的用户（目的）
+        dst: gitee/yikunkero
+        # 必选，Gitee公钥对应的私钥，https://gitee.com/profile/sshkeys
+        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
+        dst_token:  ${{ secrets.GITEE_TOKEN }}
+        # 如果是组织，指定组织即可，默认为用户user
+        # account_type: org
+        # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
+        # static_list: repo_name
+        # black_list: 'repo_name,repo_name2'
+        # white_list: 'repo_name,repo_name2'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sync Gitee Repos From Github
+      uses: Yikun/hub-mirror-action@v1.0 #使用Yikun开发的hub-mirror-action
+      with:
+        src: github/ShuguangSun #源端账户名
+        dst: gitee/shuguangS #目的端账户名
+        # dst_key: ${{ secrets.GITHUB_PRIVATE_KEY }} #SSH密钥对中的私钥，即 id_rsa
+        dst_token:  ${{ secrets.GITHUB_TOKEN }} #Gitee账户的私人令牌
+        account_type: user #账户类型
+        clone_style: "https" #使用ssh方式进行clone，也可以使用https
+        debug: true #启用后会显示所有执行命令
+        force_update: true #启用后，强制同步，即强制覆盖目的端仓库
+        # static_list: "picture" #静态同步列表，在此填写需要同步的仓库名称，可填写多个
+        timeout: '600s' #git超时设置，超时后会自动重试git操作
