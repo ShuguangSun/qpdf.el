@@ -24,9 +24,12 @@
 
 ;;; Commentary:
 
-;;
+;; qpdf with transient UI
 
 ;;; Code:
+
+(require 'compile)
+(require 'transient)
 
 (require 'qpdf-lib)
 (require 'qpdf-crypt)
