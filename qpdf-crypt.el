@@ -103,7 +103,8 @@
 
 
 (defun qpdf-crypt-decrypt-file (&optional args)
-  "qpdf decript file."
+  "Qpdf decript file.
+Optional argument ARGS Transient option."
   (interactive (if current-prefix-arg
                    nil
                  (list (transient-args 'qpdf-crypt-decrypt))))

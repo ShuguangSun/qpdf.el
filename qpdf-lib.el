@@ -48,4 +48,7 @@
 
 
 (provide 'qpdf-lib)
+;; Local variables:
+;; package-lint-main-file: "qpdf.el"
+;; end:
 ;;; qpdf-lib.el ends here
