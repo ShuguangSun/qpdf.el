@@ -30,37 +30,6 @@
 
 (require 'qpdf-lib)
 
-;; (defun qpdf-crypt-decrypt--assert (args)
-;;   "Parse transient ARGS."
-;;   (let ((infile
-;;          (car (delq
-;;                nil
-;;                (mapcar (lambda (x)
-;;                          (if (string-prefix-p "--infile=" x) (substring x 10)))
-;;                        args))))
-;;         (outfile
-;;          (car (delq
-;;                nil
-;;                (mapcar (lambda (x)
-;;                          (if (string-prefix-p "--outfile=" x) (substring x 11)))
-;;                        args))))
-;;         (strlist (concat
-;;                   "\\`\\("
-;;                   (mapconcat 'identity qpdf-option-string-list "\\|")
-;;                   "\\)=\\(.+\\)"))
-;;         ret)
-;;     (setq ret
-;;     (cl-loop for arg in args
-;;              do (cond
-;;                  ((string-match-p strlist arg)
-;;                   (setq arg arg))
-;;                  ((member arg qpdf-option-boolean-list)
-;;                   (setq arg arg))
-;;                  (t
-;;                   (setq arg nil)))
-;;              collect arg into ret
-;;              finally return ret))
-;;     (print ret)))
 
 (defun qpdf-crypt-decrypt--assert (args)
   "Parse transient ARGS."
@@ -134,8 +103,6 @@ Optional argument ARGS Transient option."
    ]
   [["Command"
     ("d" "decrypt" qpdf-crypt-decrypt-file)
-    ;; ("s" "snapshot" rutils-renv-snapshot)
-    ;; ("r" "restore" rutils-renv-restore)
     ]])
 
 
