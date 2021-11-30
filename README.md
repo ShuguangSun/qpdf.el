@@ -14,3 +14,5 @@ Clone this repository, or install from MELPA. Add the following to your `.emacs`
 ``` elisp
 (require 'qpdf)
 ```
+
+# qpdf decrypt
