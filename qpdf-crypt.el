@@ -51,7 +51,13 @@
                   "\\`\\("
                   (mapconcat 'identity qpdf-option-string-list "\\|")
                   "\\)=\\(.+\\)"))
+        diredfile
         ret)
+    (unless infile
+      (setq diredfile (car (dired-get-marked-files)))
+      (setq infile (read-file-name "File to Decrypt: "
+                                   (file-name-directory diredfile)
+                                   (file-name-nondirectory diredfile))))
     (unless outfile
       (setq outfile (file-name-concat (file-name-directory infile)
                                       (concat (file-name-base infile)
